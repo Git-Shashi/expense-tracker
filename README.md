@@ -2,6 +2,17 @@
 
 A production-quality full-stack expense tracking application built with React and Node.js. Track personal expenses with category filtering, sorting, and analytics.
 
+## Screenshots
+
+### Expense Form
+![Expense Form](images/Expense-form.png)
+
+### Expense Summary
+![Expense Summary](images/Expense-summary.png)
+
+### Expense Filter
+![Expense Filter](images/expense-filter.png)
+
 ## Tech Stack
 
 **Backend:**
@@ -141,27 +152,3 @@ frontend/
 - Network error detection with user-friendly messages
 - Graceful shutdown handling on backend
 - CORS configured for development
-
-## Trade-offs
-
-**Due to timebox:**
-- No authentication/authorization (assumed single-user)
-- No pagination (suitable for personal use)
-- No edit functionality (delete + recreate pattern)
-- No automated tests (focused on correctness over coverage)
-- In-memory totals (no database aggregation optimization needed for scale)
-
-**What was intentionally not done:**
-- User management system
-- Expense attachments/receipts
-- Budget tracking/alerts
-- Data export features
-- Advanced analytics/charts
-
-## Running Tests
-
-Tests were intentionally omitted to prioritize production-ready core functionality and correct behavior under real-world conditions (retries, network failures, concurrent requests).
-
-## License
-
-MIT
