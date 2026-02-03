@@ -95,9 +95,3 @@ export const expenseIdSchema = z.object({
     .string()
     .regex(/^[0-9a-fA-F]{24}$/, 'Invalid expense ID format')
 });
-
-// Type exports for TypeScript users (if you migrate to TypeScript)
-export type CreateExpenseInput = z.infer<typeof createExpenseSchema>;
-export type GetExpensesQuery = z.infer<typeof getExpensesQuerySchema>;
-export type UpdateExpenseInput = z.infer<typeof updateExpenseSchema>;
-export type ExpenseIdParam = z.infer<typeof expenseIdSchema>;

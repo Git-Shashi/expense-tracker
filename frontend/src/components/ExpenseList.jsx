@@ -91,7 +91,6 @@ export default function ExpenseList({ expenses, loading, onDelete, onRefresh }) 
 
   return (
     <Card title="Expenses" headerActions={headerActions}>
-      <div className="flex flex-col sm:flex-row gap-3">
       {/* Total Display */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
         <div className="flex justify-between items-center">
@@ -184,7 +183,6 @@ export default function ExpenseList({ expenses, loading, onDelete, onRefresh }) 
           </table>
         </div>
       )}
-    </div>
+    </Card>
   );
 }
-Card

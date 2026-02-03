@@ -11,7 +11,15 @@ export const validate = (schema, source = 'body') => {
     try {
       const dataToValidate = req[source];
       const validated = await schema.parseAsync(dataToValidate);
-      req[source] = validated;
+      
+      if (source === 'query') {
+        req.validatedQuery = validated;
+      } else if (source === 'params') {
+        req.validatedParams = validated;
+      } else {
+        req[source] = validated;
+      }
+      
       next();
     } catch (error) {
       if (error instanceof ZodError) {
@@ -27,7 +35,6 @@ export const validate = (schema, source = 'body') => {
         });
       }
       
-      // Pass unexpected errors to error handler
       next(error);
     }
   };

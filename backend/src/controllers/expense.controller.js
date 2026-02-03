@@ -20,9 +20,9 @@ export const createExpense = asyncHandler(async (req, res) => {
  * @access  Public
  */
 export const getExpenses = asyncHandler(async (req, res) => {
-  const expenses = await expenseService.getExpenses(req.query);
+  const queryParams = req.validatedQuery || req.query;
+  const expenses = await expenseService.getExpenses(queryParams);
   
-  // Calculate total for current filtered list
   const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
   
   const response = ApiResponse.success(
@@ -43,7 +43,8 @@ export const getExpenses = asyncHandler(async (req, res) => {
  * @access  Public
  */
 export const getExpenseById = asyncHandler(async (req, res) => {
-  const expense = await expenseService.getExpenseById(req.params.id);
+  const params = req.validatedParams || req.params;
+  const expense = await expenseService.getExpenseById(params.id);
   
   const response = ApiResponse.success(expense, 'Expense retrieved successfully');
   res.status(response.statusCode).json(response);
@@ -55,7 +56,8 @@ export const getExpenseById = asyncHandler(async (req, res) => {
  * @access  Public
  */
 export const updateExpense = asyncHandler(async (req, res) => {
-  const expense = await expenseService.updateExpense(req.params.id, req.body);
+  const params = req.validatedParams || req.params;
+  const expense = await expenseService.updateExpense(params.id, req.body);
   
   const response = ApiResponse.success(expense, 'Expense updated successfully');
   res.status(response.statusCode).json(response);
@@ -67,7 +69,8 @@ export const updateExpense = asyncHandler(async (req, res) => {
  * @access  Public
  */
 export const deleteExpense = asyncHandler(async (req, res) => {
-  await expenseService.deleteExpense(req.params.id);
+  const params = req.validatedParams || req.params;
+  await expenseService.deleteExpense(params.id);
   
   const response = ApiResponse.success(null, 'Expense deleted successfully');
   res.status(response.statusCode).json(response);
