@@ -22,9 +22,8 @@ app.get('/health', (req, res) => {
 });
 
 // API Routes
-// TODO: Import and mount expense routes here
-// import expenseRoutes from './routes/expense.routes.js';
-// app.use('/api/expenses', expenseRoutes);
+import expenseRoutes from './routes/expense.routes.js';
+app.use('/api/expenses', expenseRoutes);
 
 // 404 Handler - must be after all routes
 app.use(notFoundHandler);
